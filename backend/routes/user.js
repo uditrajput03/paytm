@@ -1,9 +1,10 @@
 const express = require("express");
-const { zodLogin , zodSignup } = require("../models/zod");
+const { zodLogin , zodSignup, zodUpdate } = require("../models/zod");
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model')
 const userRouter = express.Router();
+const {authMiddleware} = require('../middleware')
 userRouter.use('/user' , (req , res) => {
 })
 userRouter.post('/signup' , async (req , res) => {
@@ -36,5 +37,26 @@ userRouter.post('/signup' , async (req , res) => {
             message: "Invalid Input"
         })
     }
+});
+
+userRouter.put('/update' , authMiddleware , (req , res) => {
+    let body = req.body;
+    let success = zodUpdate.safeParse(req.body).success;
+    if(!success){
+        res.status(411).json({
+            message: "Invalid input"
+        })
+    }
+    User.updateOne({_id : req.userId} , body)
+    .then(() => {
+        res.status(200).json({
+            message: "successfully Updated"
+        })
+    })
+    .catch(() =>{
+        res.status(411).json({
+            message: "Something went wrong"
+        })
+    })
 })
 module.exports = userRouter;

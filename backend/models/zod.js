@@ -15,8 +15,13 @@ const zodLogin = z.object({
     email: zodEmail,
     password: zodPass
 })
-
+const zodUpdate = z.object({
+    password: zodPass.optional(),
+    firstName: zodFn.optional(),
+    lastName: zodLn.optional()
+})
 module.exports ={
     zodSignup,
-    zodLogin
+    zodLogin,
+    zodUpdate
 }
