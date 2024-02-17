@@ -4,6 +4,6 @@ const dbUrl = process.env.DB_URL;
 const connectDb = mongoose.connect(dbUrl)
     .then((e) => {console.log("connected successful to" , e.connection.host , e.connection.name);})
     .catch((e) => console.log("error occured in db!" ,e))
-exports.module ={
+module.exports ={
      connectDb
 }
