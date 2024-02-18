@@ -16,4 +16,16 @@ const userSchema = new mongoose.Schema({
         required: true}
 })
 const User = new mongoose.model('User' , userSchema);
-module.exports = User;
+
+const accountSchema = new moongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
+    balance: {
+        type: Number,
+        required: true
+    }
+})
+const Account = mongoose.model('Account' , accountSchema);
+module.exports = {User , Account};
