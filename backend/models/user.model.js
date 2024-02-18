@@ -20,6 +20,7 @@ const User = new mongoose.model('User' , userSchema);
 const accountSchema = new moongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     balance: {
