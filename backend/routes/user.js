@@ -38,7 +38,27 @@ userRouter.post('/signup' , async (req , res) => {
         })
     }
 });
-
+userRouter.post('/signin' , (req , res) => {
+    let body = req.body;
+    if(zodLogin.safeParse(body).success){
+        User.findOne(body)
+        .then((data) => {
+            if(data = null){
+                res.status(404).json({
+                    message: "Invalid username or password"
+                })
+            }
+            const token = jwt.sign({email: data.email , userId : data._id} , process.env.JWT_SECRET);
+            res.status(200).json({
+                message: "User created successfully",
+                user: token
+            })
+        })
+        .catch((e) => {
+            console.log("Error in writing database");
+        })
+    }
+})
 userRouter.put('/update' , authMiddleware , (req , res) => {
     let body = req.body;
     let success = zodUpdate.safeParse(req.body).success;
