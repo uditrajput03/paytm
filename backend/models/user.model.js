@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
 })
 const User = new mongoose.model('User' , userSchema);
 
-const accountSchema = new moongoose.Schema({
+const accountSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

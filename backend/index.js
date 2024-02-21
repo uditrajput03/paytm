@@ -11,7 +11,7 @@ app.use(express.json());
 app.use('/api/v1' , routes);
 // app.use('/api/v1/user' , userRouter);
 
-//console.log(typeof connectDb);
+console.log(typeof connectDb);
 app.listen(3000, ()=> {
     console.log("Listen on port 3000");
 });
