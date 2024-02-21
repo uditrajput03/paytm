@@ -22,7 +22,7 @@ userRouter.post('/signup' , async (req , res) => {
                     })
                 })
                 .catch((e) => {
-                    console.log("Error in writing database");
+                    console.log("Error in writing database" , e);
                 })
             }
             else{
@@ -43,19 +43,19 @@ userRouter.post('/signin' , (req , res) => {
     if(zodLogin.safeParse(body).success){
         User.findOne(body)
         .then((data) => {
-            if(data = null){
+            if(data == {}){
                 res.status(404).json({
                     message: "Invalid username or password"
                 })
             }
             const token = jwt.sign({email: data.email , userId : data._id} , process.env.JWT_SECRET);
             res.status(200).json({
-                message: "User created successfully",
+                message: "Successfully logged in",
                 user: token
             })
         })
         .catch((e) => {
-            console.log("Error in writing database");
+            console.log("Error in writing database" ,e);
         })
     }
 })
