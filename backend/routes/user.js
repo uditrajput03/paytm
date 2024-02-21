@@ -8,11 +8,11 @@ const {authMiddleware} = require('../middleware')
 userRouter.use('/user' , (req , res) => {
 })
 userRouter.post('/signup' , async (req , res) => {
-    const body = res.body;
+    const body = req.body;
     if(zodSignup.safeParse(body).success){
         await User.findOne({email: body.email})
         .then((result) => {
-            if(!result._id){
+            if(!result?._id){
                 User.create(body)
                 .then((data) => {
                     const token = jwt.sign({email: data.email , userId : data._id} , process.env.JWT_SECRET);
