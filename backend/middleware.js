@@ -2,21 +2,23 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req, res, next) => {
-    if (!req.header.authorization || !req.header.authorization.startswith("Bearer")) {
+    if (!req.headers.authorization || !req.headers.authorization.startsWith("Bearer")) {
         res.status(411).json({
             message: "Invalid token"
         })
     }
-    try {
-        let token = req.header.authorization.split(" ")[1];
-        let jwtData = jwt.verify(token, process.env.JWT_SECRET);
-        if(jwtData.userId){
-            req.userId = jwtData.userId;
-            next();
+    else {
+        try {
+            let token = req.headers.authorization.split(" ")[1];
+            let jwtData = jwt.verify(token, process.env.JWT_SECRET);
+            if (jwtData.userId) {
+                req.userId = jwtData.userId;
+                next();
+            }
         }
-    }
-    catch{
-        res.status(403).json({});
+        catch {
+            res.status(403).json({ "message": "error occured in auth" });
+        }
     }
 }
 module.exports = {

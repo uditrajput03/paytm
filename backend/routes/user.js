@@ -61,9 +61,8 @@ userRouter.post('/signin' , (req , res) => {
 })
 userRouter.put('/update' , authMiddleware , (req , res) => {
     let body = req.body;
-    let success = zodUpdate.safeParse(req.body).success;
-    if(!success){
-        res.status(411).json({
+    if(!zodUpdate.safeParse(req.body).success){
+        res.status(500).json({
             message: "Invalid input"
         })
     }
