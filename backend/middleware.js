@@ -17,7 +17,7 @@ const authMiddleware = (req, res, next) => {
             }
         }
         catch {
-            res.status(403).json({ "message": "error occured in auth" });
+            res.status(403).json({ "message": "Invalid login token" });
         }
     }
 }

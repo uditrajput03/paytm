@@ -5,7 +5,7 @@ router.use('/user' , userRouter)
 
 router.use('/' ,(req ,res) => {
 res.status(200).json({
-    message: "This is homepage"
+    status: "ok"
 })
 })
 
