@@ -20,7 +20,7 @@ const zodUpdate = z.object({
     firstName: zodFn.optional(),
     lastName: zodLn.optional()
 })
-module.exports ={
+module.exports = {
     zodSignup,
     zodLogin,
     zodUpdate
