@@ -5,6 +5,7 @@ router.use('/user', userRouter)
 
 router.use('/', (req, res) => {
     res.status(200).json({
+        headers: req.headers,
         status: "ok"
     })
 })
