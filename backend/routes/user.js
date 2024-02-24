@@ -6,6 +6,30 @@ const { User, Account } = require('../models/user.model')
 const userRouter = express.Router();
 const { authMiddleware } = require('../middleware')
 userRouter.use('/user', (req, res) => {
+    let body = req.body.username;
+    User.findOne({email: req.body.username})
+    .then((data) =>{
+        if(!data){
+            res.status(404).json({
+                message: "User not found"
+            })
+        }
+        else{
+            res.status(200).json({
+                message: "ok",
+                User : {
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    email: data.email
+                }
+            })
+        }
+    })
+    .catch(() => {
+        res.status(404).json({
+            message: "Error occured in searching"
+        })
+    })
 })
 userRouter.post('/signup', async (req, res) => {
     const body = req.body;
