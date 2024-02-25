@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const { User, Account } = require('../models/user.model')
 const userRouter = express.Router();
 const { authMiddleware } = require('../middleware')
-userRouter.use('/user', (req, res) => {
+userRouter.use('/user', authMiddleware, (req, res) => {
     let body = req.body.username;
     User.findOne({email: req.body.username})
     .then((data) =>{
