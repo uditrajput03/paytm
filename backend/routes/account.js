@@ -6,8 +6,14 @@ const { User, Account } = require('../models/user.model')
 const accountRouter = express.Router();
 const { authMiddleware } = require('../middleware')
 
-accountRouter.get('/balance' , authMiddleware , (req , res) => {
-    
+accountRouter.get('/balance' , authMiddleware , async (req , res) => {
+    const account = await Account.findOne({
+        userId: req.userId
+    });
+
+    res.json({
+        balance: account.balance
+    })
 })
 module.exports = {
     accountRouter
