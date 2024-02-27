@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const { zodLogin, zodSignup, zodUpdate } = require("../models/zod");
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
