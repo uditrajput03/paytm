@@ -1,6 +1,6 @@
 function Heading({label}) {
     return(
-        <div className="p-2 text-4xl text-center">
+        <div className="font-bold p-2 text-4xl text-center">
             {label}
         </div>
     )

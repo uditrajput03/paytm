@@ -1,3 +1,4 @@
+import AuthRedirect from "../components/AuthRedirect"
 import Button from "../components/Button"
 import Heading from "../components/Heading"
 import InputBox from "../components/InputBox"
@@ -11,6 +12,7 @@ function Signin() {
             <InputBox label="Email"/>
             <InputBox label="Password"/>
             <Button label="SignIn"/>
+            <AuthRedirect label="Don't have an account? " page="Sign Up" link="/Signup"/>
         </div>
     )
 }
