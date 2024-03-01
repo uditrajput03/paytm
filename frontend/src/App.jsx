@@ -10,19 +10,22 @@ import SubHeading from './components/SubHeading'
 import InputBox from './components/InputBox'
 import Button from './components/Button'
 import Signup from './pages/Signup'
+import Dashboard from './pages/Dashboard'
 function App() {
   const [count, setCount] = useState(0)
   return (
     <>
-    {/* <Bold>PAYTM</Bold> */}
+    {/* PAYTM */}
     {/* <Heading label="uuu"/>
     <SubHeading label="uuu"/>
     <InputBox label="uuu" placeholder="John"/>
   <Button label="UUU"/> */}
-    <AuthCard>
-  <Signup/>
+    {/* <AuthCard> */}
+  {/* <Signup/> */}
   {/* <Signin/> */}
-  </AuthCard>
+  {/* </AuthCard> */}
+  <Dashboard />
+
     </>
   )
 }
