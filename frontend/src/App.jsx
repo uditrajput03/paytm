@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Route ,Routes , BrowserRouter } from "react-router-dom"
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -12,22 +13,20 @@ import Button from './components/Button'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import SendMoney from './pages/SendMoney'
+
 function App() {
   const [count, setCount] = useState(0)
+
   return (
     <>
-    <SendMoney/>
-    {/* PAYTM */}
-    {/* <Heading label="uuu"/>
-    <SubHeading label="uuu"/>
-    <InputBox label="uuu" placeholder="John"/>
-  <Button label="UUU"/> */}
-    {/* <AuthCard> */}
-  {/* <Signup/> */}
-  {/* <Signin/> */}
-  {/* </AuthCard> */}
-  {/* <Dashboard /> */}
-
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signup" element={<AuthCard><Signup/></AuthCard>}/>
+        <Route path="/signin" element={<AuthCard><Signin/></AuthCard>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/send" element={<SendMoney/>}/>
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }
