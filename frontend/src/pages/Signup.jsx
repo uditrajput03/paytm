@@ -19,8 +19,8 @@ function Signup() {
             <SubHeading label="Enter your information to create an account"/>
             <InputBox onChange={e => setFirstName(e.target.value)} label="First Name" placeholder="John"/>
             <InputBox onChange={e => setLastName(e.target.value)} label="Last Name" placeholder="Doe"/>
-            <InputBox onChange={e => setEmail(e.target.value)} label="Email" placeholder="johndoe@example.com"/>
-            <InputBox onChange={e => setPassword(e.target.value)} label="Password"/>
+            <InputBox onChange={e => setEmail(e.target.value)} label="Email" placeholder="johndoe@example.com" type="email"/>
+            <InputBox onChange={e => setPassword(e.target.value)} label="Password" type="password"/>
             <Button onClick={ async () => {
                 let res = await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/v1/user/signup' , {
                     firstName,
