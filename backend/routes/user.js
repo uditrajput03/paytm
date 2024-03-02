@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const { User, Account } = require('../models/user.model')
 const userRouter = express.Router();
 const { authMiddleware } = require('../middleware')
+
 userRouter.use('/user', authMiddleware, (req, res) => {
     let body = req.body.username;
     User.findOne({email: req.body.username})
@@ -129,6 +130,17 @@ userRouter.get("/bulk", async (req, res) => {
             lastName: user.lastName,
             _id: user._id
         }))
+    })
+})
+userRouter.get('/me' , authMiddleware , (req , res) => {
+    User.findOne({_id: req.userId} , "-password -__v")
+    .then((data) => {
+        res.status(200).json(data)
+    })
+    .catch(() => {
+        res.status(411).json({
+            message: "Invalid token and user"
+        })
     })
 })
 module.exports = userRouter;
