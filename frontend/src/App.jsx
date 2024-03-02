@@ -11,10 +11,12 @@ import InputBox from './components/InputBox'
 import Button from './components/Button'
 import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
+import SendMoney from './pages/SendMoney'
 function App() {
   const [count, setCount] = useState(0)
   return (
     <>
+    <SendMoney/>
     {/* PAYTM */}
     {/* <Heading label="uuu"/>
     <SubHeading label="uuu"/>
@@ -24,7 +26,7 @@ function App() {
   {/* <Signup/> */}
   {/* <Signin/> */}
   {/* </AuthCard> */}
-  <Dashboard />
+  {/* <Dashboard /> */}
 
     </>
   )
