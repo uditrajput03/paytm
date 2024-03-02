@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 function Balance(){
     const [bal , setBal] = useState(0)
     useEffect(()=> {
-        axios.get('https://verbose-broccoli-5pvjppgwgr4fv5xv-3000.app.github.dev/api/v1/account/balance' , {
+        axios.get(import.meta.env.VITE_BACKEND_URL + '/api/v1/account/balance' , {
             headers:{
                 authorization: "Bearer " + localStorage.getItem('token')
             }

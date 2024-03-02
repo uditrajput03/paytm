@@ -8,7 +8,7 @@ function Home(){
       let token = localStorage.getItem('token');
       if(!token) navigate('/signin')
       else{
-        axios.get('https://verbose-broccoli-5pvjppgwgr4fv5xv-3000.app.github.dev/api/v1/user/me' , {
+        axios.get(import.meta.env.VITE_BACKEND_URL + '/api/v1/user/me' , {
           headers:{
             authorization: "Bearer " + token
           }

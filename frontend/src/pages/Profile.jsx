@@ -16,7 +16,7 @@ function Profile() {
         let token = localStorage.getItem('token');
         if(!token) navigate('/signin')
         else{
-          axios.get('https://verbose-broccoli-5pvjppgwgr4fv5xv-3000.app.github.dev/api/v1/user/me' , {
+          axios.get(import.meta.env.VITE_BACKEND_URL + '/api/v1/user/me' , {
             headers:{
               authorization: "Bearer " + token
             }
@@ -39,7 +39,7 @@ function Profile() {
             <InputBox onChange={e => setEmail(e.target.value)} label="Email" placeholder={email}/>
             <InputBox onChange={e => setPassword(e.target.value)} label="Password"/>
             <Button onClick={ async () => {
-                await axios.put('https://verbose-broccoli-5pvjppgwgr4fv5xv-3000.app.github.dev/api/v1/user/update' , {
+                await axios.put(import.meta.env.VITE_BACKEND_URL + '/api/v1/user/update' , {
                     firstName,
                     lastName,
                     email

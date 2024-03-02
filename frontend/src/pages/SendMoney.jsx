@@ -28,7 +28,7 @@ function SendMoney() {
                         <input onChange={(e) => { setAmount(e.target.value)}} className="w-full border-2 border-slate-200 rounded-l h-10 p-2 my-2" type="number" placeholder="Enter Amount" />
                         <button onClick={() => {
                             setWarning("")
-                            axios.post("https://verbose-broccoli-5pvjppgwgr4fv5xv-3000.app.github.dev/api/v1/account/transfer" , {
+                            axios.post(import.meta.env.VITE_BACKEND_URL + "/api/v1/account/transfer" , {
                                 to: id,
                                 amount
                             } , {

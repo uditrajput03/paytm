@@ -7,7 +7,7 @@ function Auth(element) {
     const navigate = useNavigate()
     useEffect(()=> {
         if(localStorage.getItem('token')){
-            axios.get("https://verbose-broccoli-5pvjppgwgr4fv5xv-3000.app.github.dev/api/v1/user/auth" , {
+            axios.get(import.meta.env.VITE_BACKEND_URL + "/api/v1/user/auth" , {
                 headers:{
                     authorization: "Bearer "+ localStorage.getItem('token')
                 }

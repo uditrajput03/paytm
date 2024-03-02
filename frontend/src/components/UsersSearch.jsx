@@ -6,7 +6,7 @@ function UserSearch() {
     const [filter , setFilter] = useState("")
     const [userlist , setUserlist] = useState([])
     useEffect(() => {
-        axios.get("https://verbose-broccoli-5pvjppgwgr4fv5xv-3000.app.github.dev/api/v1/user/bulk?filter=" + filter)
+        axios.get(import.meta.env.VITE_BACKEND_URL + "/api/v1/user/bulk?filter=" + filter)
         .then((res) =>{
             setUserlist(res.data.user)
         })

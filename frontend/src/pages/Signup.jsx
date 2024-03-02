@@ -22,7 +22,7 @@ function Signup() {
             <InputBox onChange={e => setEmail(e.target.value)} label="Email" placeholder="johndoe@example.com"/>
             <InputBox onChange={e => setPassword(e.target.value)} label="Password"/>
             <Button onClick={ async () => {
-                let res = await axios.post('https://verbose-broccoli-5pvjppgwgr4fv5xv-3000.app.github.dev/api/v1/user/signup' , {
+                let res = await axios.post(import.meta.env.VITE_BACKEND_URL + '/api/v1/user/signup' , {
                     firstName,
                     lastName,
                     email,
