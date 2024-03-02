@@ -41,7 +41,7 @@ function Signin() {
                     navigate('/dashboard')
                 }
             }} label="SignIn"/>
-            <AuthRedirect label="Don't have an account? " page="Sign Up" link="/Signup"/>
+            <AuthRedirect label="Don't have an account?" page="Sign Up" link="/Signup"/>
         </div>
     )
 }
