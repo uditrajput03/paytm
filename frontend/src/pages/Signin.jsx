@@ -5,7 +5,7 @@ import Heading from "../components/Heading"
 import InputBox from "../components/InputBox"
 import SubHeading from "../components/SubHeading"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function Signin() {
     const [email , setEmail] = useState("")

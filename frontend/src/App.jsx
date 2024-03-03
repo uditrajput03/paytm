@@ -10,6 +10,7 @@ import axios from 'axios'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Logout from './pages/Logout'
+import Auth from './pages/Auth'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,10 +21,11 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path="/signup" element={<AuthCard><Signup/></AuthCard>}/>
         <Route path="/signin" element={<AuthCard><Signin/></AuthCard>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/dashboard" element={<Auth><Dashboard/></Auth>}/>
         <Route path="/send" element={<SendMoney/>}/>
         <Route path='/profile' element={<AuthCard><Profile/></AuthCard>}/>
         <Route path='/logout' element={<Logout />}/>
+        <Route path='/auth' element={<Auth />}/>
       </Routes>
     </BrowserRouter>
     </>

@@ -143,4 +143,9 @@ userRouter.get('/me' , authMiddleware , (req , res) => {
         })
     })
 })
+userRouter.get('/auth' , authMiddleware , (req , res) => {
+    res.status(200).json({
+        message: "ok"
+    })
+})
 module.exports = userRouter;

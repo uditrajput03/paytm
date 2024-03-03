@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom"
+
 function AuthRedirect({label , page , link}) {
     return(
         <div>
             {label}
-            <a className="underline" href={link}>{page}</a>
+            <Link to={link}>{page}</Link>
         </div>
     )
 }

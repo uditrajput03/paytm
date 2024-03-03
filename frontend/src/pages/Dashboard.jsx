@@ -6,6 +6,7 @@ import InputBox from "../components/InputBox"
 import UsersList from "../components/UsersList"
 import UserSearch from "../components/UsersSearch"
 import axios from "axios"
+import Auth from "./Auth"
 
 function Dashboard(params) {
     return(
