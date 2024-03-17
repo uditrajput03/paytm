@@ -8,29 +8,29 @@ const { authMiddleware } = require('../middleware')
 
 userRouter.use('/user', authMiddleware, (req, res) => {
     let body = req.body.username;
-    User.findOne({email: req.body.username})
-    .then((data) =>{
-        if(!data){
-            res.status(404).json({
-                message: "User not found"
-            })
-        }
-        else{
-            res.status(200).json({
-                message: "ok",
-                User : {
-                    firstName: data.firstName,
-                    lastName: data.lastName,
-                    email: data.email
-                }
-            })
-        }
-    })
-    .catch(() => {
-        res.status(404).json({
-            message: "Error occured in searching"
+    User.findOne({ email: req.body.username })
+        .then((data) => {
+            if (!data) {
+                res.status(404).json({
+                    message: "User not found"
+                })
+            }
+            else {
+                res.status(200).json({
+                    message: "ok",
+                    User: {
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email
+                    }
+                })
+            }
         })
-    })
+        .catch(() => {
+            res.status(404).json({
+                message: "Error occured in searching"
+            })
+        })
 })
 userRouter.post('/signup', async (req, res) => {
     const body = req.body;
@@ -73,7 +73,8 @@ userRouter.post('/signin', (req, res) => {
     if (zodLogin.safeParse(body).success) {
         User.findOne(body)
             .then((data) => {
-                if (data == {}) {
+                console.log(data);
+                if (data == null) {
                     res.status(404).json({
                         message: "Invalid username or password"
                     })
@@ -87,6 +88,11 @@ userRouter.post('/signin', (req, res) => {
             .catch((e) => {
                 console.log("Error in writing database", e);
             })
+    }
+    else {
+        res.status(500).json({
+            message: "Invalid input"
+        })
     }
 })
 userRouter.put('/update', authMiddleware, (req, res) => {
@@ -132,18 +138,18 @@ userRouter.get("/bulk", async (req, res) => {
         }))
     })
 })
-userRouter.get('/me' , authMiddleware , (req , res) => {
-    User.findOne({_id: req.userId} , "-password -__v")
-    .then((data) => {
-        res.status(200).json(data)
-    })
-    .catch(() => {
-        res.status(411).json({
-            message: "Invalid token and user"
+userRouter.get('/me', authMiddleware, (req, res) => {
+    User.findOne({ _id: req.userId }, "-password -__v")
+        .then((data) => {
+            res.status(200).json(data)
         })
-    })
+        .catch(() => {
+            res.status(411).json({
+                message: "Invalid token and user"
+            })
+        })
 })
-userRouter.get('/auth' , authMiddleware , (req , res) => {
+userRouter.get('/auth', authMiddleware, (req, res) => {
     res.status(200).json({
         message: "ok"
     })
