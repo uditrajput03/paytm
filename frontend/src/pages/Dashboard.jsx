@@ -10,7 +10,7 @@ import Auth from "./Auth"
 
 function Dashboard(params) {
     return(
-        <div className="m-2">
+        <div className="my-2 mx-10">
             <Appbar />
             <Balance />
             <UserSearch/>
